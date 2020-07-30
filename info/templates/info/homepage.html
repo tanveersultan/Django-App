@@ -1,0 +1,71 @@
+
+<!-- {% extends 'info/base2.htm'%} -->
+{% extends request.is_ajax|yesno:"fancybox/base2.html,base2.html" %}
+{% load static %}
+{% block content %}
+
+    <div class="col-md-4 text-center">
+	  <div class="box-item">
+	  <!-- <i class="circle"> <img src="images/3.png" alt="" /></i>
+        <h3>Reports</h3>
+        <p>Nullam ac rhoncus sapien, non gravida purus. Alinon elit imperdiet congue. Integer elit imperdiet conempus.</p> -->
+        <a href="{% url 'attendance' request.user.student.USN %}">
+            <img class="card-img-top" src="{% static 'info/images/attendance2.jpg' %}" alt="">
+          </a>
+          <div class="card-body">
+          <h4 class="card-title">Attendance</h4>
+          <p class="card-text">View the attendance status for each of your courses . The attendance of each course is
+              also displayed as list of classes that were conducted .</p>
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-primary" role="button" href="{% url 'attendance' request.user.student.USN %}"> View Attendance</a>
+        </div> 
+        <br>
+    </div>
+      
+    </div>
+    <div class="col-md-4 text-center">
+        <div class="box-item">
+        <!-- <i class="circle"> <img src="images/3.png" alt="" /></i>
+          <h3>Reports</h3>
+          <p>Nullam ac rhoncus sapien, non gravida purus. Alinon elit imperdiet congue. Integer elit imperdiet conempus.</p> -->
+        
+          <a href="{% url 'marks_list' request.user.student.USN %}">
+            <img class="card-img-top" src="{% static 'info/images/marks.jpg' %}" alt="">
+          </a>
+          <div class="card-body">
+          <h4 class="card-title">Marks</h4>
+          <p class="card-text">View the marks obtained for each of your courses. These include the marks of 3
+              internal assessment, 2 events and the Semester End Exam  </p>
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-primary" role="button" href="{% url 'marks_list' request.user.student.USN %}">View Marks</a>
+        </div>
+        <br>
+        </div>
+        
+     </div>
+     <div class="col-md-4 text-center">
+	  <div class="box-item">
+	  <!-- <i class="circle"> <img src="images/3.png" alt="" /></i>
+        <h3>Reports</h3>
+        <p>Nullam ac rhoncus sapien, non gravida purus. Alinon elit imperdiet congue. Integer elit imperdiet conempus.</p> -->
+        
+        <a href="{% url 'timetable' request.user.student.class_id_id %}">
+            <img class="card-img-top" src="{% static 'info/images/timetable.png' %}" alt="">
+          </a>
+          <div class="card-body">
+          <h4 class="card-title">TimeTable</h4>
+          <p class="card-text">View the timetable in a tabular form. The timetable displays all the courses of the
+              student and the time and day at which they are conducted.</p>
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-primary" role="button" href="{% url 'timetable' request.user.student.class_id_id %}">View TimeTable</a>
+        </div>  
+        <br>
+      </div>
+     
+    </div>
+    
+	</div>
+{% endblock %}

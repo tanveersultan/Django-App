@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>homepage</title>
+      {% load static %}
+
+    <!-- Bootstrap core CSS -->
+      {% comment %} <link href="{% static '/info/homepage/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet"> {% endcomment %}
+
+
+    <!-- Custom styles for this template -->
+      {% comment %} <link href="{% static '/info/homepage/css/heroic-features.css' %}" rel="stylesheet">
+          <link href="{% static '/info/bootstrap/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+ {% endcomment %}
+
+
+
+<!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'homepage/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="{% static 'homepage/css/mdb.min.css' %}" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="{% static 'homepage/css/style.css' %}" rel="stylesheet">
+ <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Cookie"/>
+
+<style>
+h2:hover{
+ font-weight: bold;
+}
+</style>
+
+</head>
+
+<body>
+     <!--Main Navigation-->
+ <header>
+    <!--Navbar-->
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+
+        <div class="container">
+
+            <!-- Navbar brand -->
+            <a class="navbar-brand"  href="{% url 'index' %}"  style="font-family: 'Cookie', serif;font-size: 48px;text-shadow: 4px 4px 4px #aaa;">Class Management Portal </a>
+
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="basicExampleNav">
+
+                <!-- Links -->
+
+            <ul class="navbar-nav mr-auto smooth-scroll" style=" font-weight: bold; font-family:Cookie; font-size:25px;">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{% url 'index' %}">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Option1</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Option2</a>
+                    </li>
+
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+
+                </ul>
+                <!-- Links -->
+
+               
+            </div>
+            <!-- Collapsible content -->
+            <!-- Social Icon  -->
+            <ul class="navbar-nav nav-flex-icons">
+                <li class="nav-item">
+                    <a class="nav-link"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"><i class="fa fa-instagram"></i></a>
+                </li>
+            </ul>
+
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link text-capitalize" style="font-family: 'Cookie">{{ request.user.student.name }}<i class="fa fa-user"></i>  </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal" style="font-family: 'Cookie">Logout<i class="fa fa-sign-out"></i></a>
+            </li>
+          </ul>
+        </div>
+        </div>
+    </nav>
+    <!--Mask-->
+   {% block content %}
+
+   {% endblock content %}
+<!--/.Mask-->
+
+
+    <!--/.Navbar-->
+</header>
+
+
+
+
+<div class="container">
+
+<div class="row">
+    <div class="container">
+      <!-- Page Features -->
+      <hr>
+      <div class="row text-center mt-2 ">
+
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+              <a href="{% url 'attendance' request.user.student.USN %}">
+                <img class="card-img-top" src="{% static 'info/images/attendance2.jpg' %}" alt="">
+              </a>
+              <div class="card-body">
+              <h4 class="card-title">Attendance</h4>
+              <p class="card-text">View the attendance status for each of your courses. The attendance of each course is
+                  also displayed as list of classes that were conducted.</p>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" href="{% url 'attendance' request.user.student.USN %}"> View Attendance</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+              <a href="{% url 'marks_list' request.user.student.USN %}">
+                <img class="card-img-top" src="{% static 'info/images/marks.jpg' %}" alt="">
+              </a>
+              <div class="card-body">
+              <h4 class="card-title">Marks</h4>
+              <p class="card-text">View the marks obtained for each of your courses. These include the marks of 3
+                  internal assessment, 2 events and the Semester End Exam  </p>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" href="{% url 'marks_list' request.user.student.USN %}">View Marks</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+              <a href="{% url 'timetable' request.user.student.class_id_id %}">
+                <img class="card-img-top" src="{% static 'info/images/timetable.png' %}" alt="">
+              </a>
+              <div class="card-body">
+              <h4 class="card-title">TimeTable</h4>
+              <p class="card-text">View the timetable in a tabular form. The timetable displays all the courses of the
+                  student and the time and day at which they are conducted.</p>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" href="{% url 'timetable' request.user.student.class_id_id %}">View TimeTable</a>
+            </div>
+          </div>
+        </div>
+
+
+    </div>
+      <!-- /.row -->
+</div>
+    <!-- /.container -->
+    <!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="/accounts/logout">Logout</a>
+          </div>
+        </div>
+      </div>
+ </div>
+
+</div>
+    
+
+          <!--Section: Best Features-->
+ <section id="best-features">
+            <!--Section: Best Features-->
+        <section id="best-features" class="text-center">
+
+                <!-- Heading -->
+                <h2 class="mb-5">Best Features</h2>
+
+                <!--Grid row-->
+                <div class="row d-flex justify-content-center mb-4">
+
+                    <!--Grid column-->
+                    <div class="col-md-8">
+
+                        <!-- Description -->
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi voluptate hic provident nulla repellat
+                            facere esse molestiae ipsa labore porro minima quam quaerat rem, natus repudiandae debitis est
+                            sit pariatur.</p>
+
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-4 mb-1">
+                        <i class="fa fa-camera-retro fa-3x blue-text"></i>
+                        <h4 class="my-4">Experience</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima
+                            assumenda deleniti hic.</p>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-4 mb-1">
+                        <i class="fa fa-heart fa-3x blue-text" ></i>
+                        <h4 class="my-4">Happiness</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima
+                            assumenda deleniti hic.</p>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-4 mb-1">
+                        <i class="fa fa-bicycle fa-3x blue-text"></i>
+                        <h4 class="my-4">Adventure</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima
+                            assumenda deleniti hic.</p>
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+
+         </section>
+              <!--Section: Best Features-->
+
+
+</section>
+          <!--Section: Best Features-->
+
+          <hr class="my-5">
+
+          <!--Section: Examples-->
+          <!--Section: Examples-->
+         <section id="examples" class="text-center">
+
+        <!-- Heading -->
+       
+       
+       
+
+            </section>
+    <!--Section: Examples-->
+          <!--Section: Examples-->
+
+          <hr class="my-5">
+
+          <!--Section: Gallery-->
+          <!--Section: Gallery-->
+<section id="gallery">
+
+      <!-- Heading -->
+      <h2 class="mb-5 font-weight-bold text-center">Gallery heading</h2>
+
+      <!--Grid row-->
+
+
+
+</section>
+  
+
+</div>
+
+{% comment %} <div class="container-fluid"> {% endcomment %}
+
+
+<div class="row m-0">
+
+          <!--Grid column-->
+          <!--Grid column-->
+    <div class="col-md-12 mb-4" >
+
+        <!--Carousel Wrapper-->
+          <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+        <!--Indicators-->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+            <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+        </ol>
+        <!--/.Indicators-->
+        <!--Slides-->
+        <div class="carousel-inner z-depth-1-half" style="height:400px;" role="listbox">
+            <!--First slide-->
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Others/images/84.jpg" alt="First slide">
+            </div>
+            <!--/First slide-->
+            <!--Second slide-->
+            <div class="carousel-item">
+                <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Others/images/85.jpg" alt="Second slide">
+            </div>
+            <!--/Second slide-->
+            <!--Third slide-->
+            <div class="carousel-item">
+                <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Others/images/86.jpg" alt="Third slide">
+            </div>
+            <!--/Third slide-->
+        </div>
+        <!--/.Slides-->
+        <!--Controls-->
+        <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+        <!--/.Controls-->
+    </div>
+    <!--/.Carousel Wrapper-->
+
+
+</div>
+
+
+</div>
+</div>
+
+
+
+
+{% comment %} <div class="container">
+          <a class="navbar-brand" href="{% url 'index' %}">Class Management System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link text-capitalize">{{ request.user.student.name }}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div> {% endcomment %}
+
+
+   
+    <!-- Page Content -->
+
+<!--/.Footer Links-->
+<!--Footer-->
+
+ <footer class="page-footer font-small blue pt-4 mt-4" style="background-color:#24355c !important">
+
+      <!--Footer Links-->
+      <!--Footer Links-->
+  <div class="container mt-5 mb-4 text-center text-md-left">
+    <div class="row mt-3">
+
+        <!--First column-->
+        <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+            <h6 class="text-uppercase font-weight-bold">
+                <strong>Company name</strong>
+            </h6>
+            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <!--/.First column-->
+
+        <!--Second column-->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <h6 class="text-uppercase font-weight-bold">
+                <strong>Products</strong>
+            </h6>
+            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+            <p>
+                <a href="#!">Ecommerce</a>
+            </p>
+            <p>
+                <a href="#!">Blog</a>
+            </p>
+            <p>
+                <a href="#!">Portfolio</a>
+            </p>
+            <p>
+                <a href="#!">Forum</a>
+            </p>
+        </div>
+        <!--/.Second column-->
+
+        <!--Third column-->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <h6 class="text-uppercase font-weight-bold">
+                <strong>Useful links</strong>
+            </h6>
+            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+            <p>
+                <a href="#!">Your Account</a>
+            </p>
+            <p>
+                <a href="#!">Become an Affiliate</a>
+            </p>
+            <p>
+                <a href="#!">Shipping Rates</a>
+            </p>
+            <p>
+                <a href="#!">Help</a>
+            </p>
+        </div>
+        <!--/.Third column-->
+
+        <!--Fourth column-->
+        <div class="col-md-4 col-lg-3 col-xl-3">
+            <h6 class="text-uppercase font-weight-bold">
+                <strong>Contact</strong>
+            </h6>
+            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+            <p>
+                <i class="fa fa-home mr-3"></i> Tunisia, Ariana 2073, TN</p>
+            <p>
+                <i class="fa fa-envelope mr-3"></i> example@example.com</p>
+            <p>
+                <i class="fa fa-phone mr-3"></i> + 21626538845</p>
+            <p>
+                <i class="fa fa-print mr-3"></i> + 21626538845</p>
+        </div>
+        <!--/.Fourth column-->
+
+    </div>
+  </div>
+{% comment %} </footer> {% endcomment %}
+
+<footer class="page-footer font-small "  style="background-color:#24355c !important">
+
+    <!-- Social buttons -->
+    <div class="primary-color"  style="background-color:#24355c !important;  border-top: 2px solid #ffff;">
+        <div class="container">
+            <!--Grid row-->
+            <div class="row py-4 d-flex align-items-center">
+
+                <!--Grid column-->
+                <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+                    <h6 class="mb-0 white-text">Get connected with us on social networks!</h6>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-md-6 col-lg-7 text-center text-md-right">
+                    <!--Facebook-->
+                    <a class="fb-ic ml-0">
+                        <i class="fa fa-facebook white-text mr-4"> </i>
+                    </a>
+                    <!--Twitter-->
+                    <a class="tw-ic">
+                        <i class="fa fa-twitter white-text mr-4"> </i>
+                    </a>
+                    <!--Google +-->
+                    <a class="gplus-ic">
+                        <i class="fa fa-google-plus white-text mr-4"> </i>
+                    </a>
+                    <!--Linkedin-->
+                    <a class="li-ic">
+                        <i class="fa fa-linkedin white-text mr-4"> </i>
+                    </a>
+                    <!--Instagram-->
+                    <a class="ins-ic">
+                        <i class="fa fa-instagram white-text mr-lg-4"> </i>
+                    </a>
+                </div>
+                <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+        </div>
+    </div>
+  
+</footer>
+<footer class="page-footer unique-color-dark pt-0 text-center p-md-3">
+          © 2020 Copyright:
+          <a href="#"> Anam Sheza  </a>
+      </div>
+      <!--/.Copyright-->
+
+  </footer>
+  <!--/.Footer-->
+  <!--Footer-->
+
+
+
+
+   
+
+
+    {% comment %} <script src="{% static '/info/homepage/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static '/info/homepage/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script> {% endcomment %}
+
+
+     <!-- JQuery -->
+    <script type="text/javascript" src="{% static 'homepage/js/jquery-3.3.1.min.js' %}"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{%static 'homepage/js/popper.min.js' %}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{%static 'homepage/js/bootstrap.min.js' %}"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{% static 'homepage/js/mdb.min.js' %}"></script>
+    <script src="https://maps.google.com/maps/api/js"></script>
+    
+    <script>
+    $('.carousel').carousel({
+        interval: 2000,
+    });
+    </script>
+
+  </body>
+
+</html>
